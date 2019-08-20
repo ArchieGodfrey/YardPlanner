@@ -58,7 +58,7 @@ class DrawerMenu extends Component<Props, State> {
           <View style={styles.top}>
             <Image
               style={styles.logo}
-              source={require('../images/print-icon.png')}
+              source={require('../images/apple-pay.png')}
             />
             <TouchableWithoutFeedback
               onPress={() => navigation.closeDrawer()}
@@ -126,6 +126,5 @@ const styles = StyleSheet.create({
 
 export default connect(() => ({
   loggedIn: isLoggedIn(),
-  code: getCode(),
 }))(DrawerMenu);
 

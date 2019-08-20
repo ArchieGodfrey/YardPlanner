@@ -23,12 +23,10 @@ class Dashboard extends Component<Props> {
     const { navigation } = this.props;
     return (
       <SafeAreaView style={styles.container}>
-      <View>
       <Header
           navigation={navigation}
           banner
         />
-      </View>
         <Text>Dashboard</Text>
       </SafeAreaView>
     );

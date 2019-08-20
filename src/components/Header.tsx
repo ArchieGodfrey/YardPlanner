@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableWithoutFeedback, Image } from 'react-native';
 import { DrawerActions } from 'react-navigation';
-import { Colors, FontSizes } from 'config';
+import { Colors, FontSizes } from '../config';
 
 export interface Props {
   navigation: any,
@@ -53,9 +53,10 @@ class Header extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
+    backgroundColor: Colors.Grey,
     flexDirection: 'row',
-    marginHorizontal: 10,
+    paddingHorizontal: 10,
     alignItems: 'center',
   },
   logo: {
