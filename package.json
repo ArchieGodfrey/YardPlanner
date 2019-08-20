@@ -6,10 +6,14 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "fetchival": "^0.3.3",
+    "lodash": "^4.17.15",
     "react": "16.8.3",
     "react-native": "0.59.1",
     "react-native-gesture-handler": "^1.1.0",
     "react-navigation": "^3.5.1",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
     "tslint": "^5.18.0"
   },
   "devDependencies": {
