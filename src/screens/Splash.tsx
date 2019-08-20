@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Colors } from 'config';
-import { SCREEN_NAME, STACKS } from 'screens';
+import { Colors } from '../config';
+import { SCREEN_NAME } from '../screens/index';
 
 export interface Props {
   navigation: any,

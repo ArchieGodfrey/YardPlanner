@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 
-import { SCREEN_COMPONENT, SCREEN_NAME } from 'screens';
+import { SCREEN_COMPONENT, SCREEN_NAME } from '../screens/index';
 
 export default createStackNavigator({
   [SCREEN_NAME.Splash]: SCREEN_COMPONENT.Splash,

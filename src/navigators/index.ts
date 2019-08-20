@@ -1,6 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import { STACKS } from 'screens';
+import { STACKS } from '../screens/index';
 
 import MainStack from './MainStack';
 import AuthenStack from './AuthenStack';

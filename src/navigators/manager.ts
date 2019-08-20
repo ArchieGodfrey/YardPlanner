@@ -1,4 +1,4 @@
-import { STACKS } from 'screens';
+import { STACKS } from '../screens/index';
 import { NavigationActions } from 'react-navigation';
 
 class NavigationManager {

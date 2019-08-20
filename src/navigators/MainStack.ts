@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native'
 import { createDrawerNavigator } from 'react-navigation';
-import { SCREEN_COMPONENT, SCREEN_NAME } from 'screens';
+import { SCREEN_COMPONENT, SCREEN_NAME } from '../screens/index';
 import DrawerMenu from '../components/DrawerMenu';
 
 const getStackScreen = (firstScreenName: any) => {

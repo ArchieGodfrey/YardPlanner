@@ -5,7 +5,7 @@ interface ScreenList {
 
 export const SCREEN_COMPONENT = {
   Splash: require('./Splash').default,
-  Dashboard: require('./@Dashboard').default,
+  Dashboard: require('./Dashboard').default,
 };
 
 //@ts-ignore

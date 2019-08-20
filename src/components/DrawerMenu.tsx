@@ -10,11 +10,11 @@ import {
   Image
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { Colors, FontSizes, Fonts } from 'config';
+import { Colors, FontSizes, Fonts } from '../config';
 import { connect } from 'react-redux';
-import { isLoggedIn, getCode, getUser } from '../services/session/selectors';
+import { isLoggedIn, } from '../services/session/selectors';
 import * as session from '../services/session';
-import { SCREEN_NAME } from 'screens';
+import { SCREEN_NAME } from '../screens/index';
 
 export interface Props {
   navigation: any,

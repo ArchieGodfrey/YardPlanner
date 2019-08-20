@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -8,13 +8,29 @@ import {
   WebView,
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
+import Header from '../components/Header';
 
-class Dashboard extends React.Component {
+export interface Props {
+  navigation: any,
+  [key: string]: any,
+}
+
+class Dashboard extends Component<Props> {
+  static info = {
+    name: 'Dashboard'
+  };
   render() {
+    const { navigation } = this.props;
     return (
-      <View style={styles.container}>
-        <Text>Dashboard</Text>
+      <SafeAreaView style={styles.container}>
+      <View>
+      <Header
+          navigation={navigation}
+          banner
+        />
       </View>
+        <Text>Dashboard</Text>
+      </SafeAreaView>
     );
   }
 }
