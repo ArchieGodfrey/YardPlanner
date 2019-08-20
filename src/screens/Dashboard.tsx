@@ -10,10 +10,6 @@ import {
 import { SafeAreaView } from 'react-navigation';
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <View style={styles.container}>
