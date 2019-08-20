@@ -35,23 +35,21 @@ class DrawerMenu extends Component<Props, State> {
     this.logout = this.logout.bind(this);
   }
 
-  navigateToScreen = route => () => {
+  navigateToScreen(route) {
     const { navigation } = this.props;
-    const navigateAction = NavigationActions.navigate({
-      routeName: route,
-    });
     navigation.closeDrawer()
-    navigation.dispatch(navigateAction);
+    navigation.navigate(route);
   }
 
   logout() {
+    const { navigation } = this.props;
     session.clearSession()
-    this.props.navigation.navigate('AuthenNavigation')
-    this.props.navigation.navigate(SCREEN_NAME.Dashboard)
+    navigation.navigate('AuthenNavigation')
+    navigation.navigate(SCREEN_NAME.Dashboard)
   }
 
   render() {
-    const { navigation, loggedIn } = this.props;
+    const { navigation } = this.props;
     return (
       <ScrollView>
         <SafeAreaView style={styles.container}>
@@ -71,11 +69,38 @@ class DrawerMenu extends Component<Props, State> {
             </TouchableWithoutFeedback>
           </View>
           <TouchableWithoutFeedback
-            onPress={this.navigateToScreen('Dashboard')}
+            onPress={() => this.navigateToScreen(SCREEN_NAME.Dashboard)}
           >
             <View style={styles.item}>
               <Text style={styles.text}>
                 Home
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.navigateToScreen(SCREEN_NAME.Planner)}
+          >
+            <View style={styles.item}>
+              <Text style={styles.text}>
+                Planner
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.navigateToScreen(SCREEN_NAME.Stable)}
+          >
+            <View style={styles.item}>
+              <Text style={styles.text}>
+                Stable
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.navigateToScreen(SCREEN_NAME.Profile)}
+          >
+            <View style={styles.item}>
+              <Text style={styles.text}>
+                Profile
               </Text>
             </View>
           </TouchableWithoutFeedback>
@@ -118,7 +143,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: FontSizes.Large,
-    color: Colors.Purple,
+    color: Colors.Black,
     fontWeight: 'bold',
     fontFamily: Fonts.Black,
   },
