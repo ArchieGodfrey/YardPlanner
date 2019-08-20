@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../components/Header';
+import { Colors, FontSizes, Fonts } from '../config';
 
 export interface Props {
   navigation: any,
@@ -36,7 +37,7 @@ class Dashboard extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: Colors.BlueGrey,
   },
 });
 

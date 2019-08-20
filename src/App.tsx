@@ -31,7 +31,7 @@ class AppContainer extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
-          <StatusBar backgroundColor={Colors.Grey} barStyle="light-content"/>
+          <StatusBar backgroundColor={Colors.Grey} barStyle="dark-content"/>
           <AppNavigation
             ref={nav => {
               NavigationManager.initNav(nav);
