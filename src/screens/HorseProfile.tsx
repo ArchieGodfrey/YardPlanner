@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
+  Animated,
   StyleSheet,
   FlatList,
   Image,
+  Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../components/Header';
@@ -18,13 +19,48 @@ export interface Props {
   [key: string]: any,
 }
 
+interface State {
+  viewHeight: any,
+}
+
 const rugImages = [1,2,3]
 
-class HorseProfile extends Component<Props> {
+class HorseProfile extends Component<Props, State> {
+  constructor(props){
+    super(props)
+    this.state = {
+      viewHeight: new Animated.Value(Dimensions.get('window').height * 0.9),
+    }
+  }
+
   static info = {
     name: 'HorseProfile'
   };
+
+  toggleDetailView() {
+    const { viewHeight } = this.state;
+    console.log(viewHeight)
+    if (viewHeight._value > Dimensions.get('window').height * 0.4) {
+      Animated.timing(                  
+        viewHeight,            
+        {
+          toValue: Dimensions.get('window').height * 0.4,                   
+          duration: 1000,              
+        }
+      ).start(); 
+    } else {
+      Animated.timing(                  
+        viewHeight,            
+        {
+          toValue: Dimensions.get('window').height * 0.9,                   
+          duration: 1000,              
+        }
+      ).start(); 
+    }
+  }
+
   render() {
+    const { viewHeight } = this.state;
     const { navigation } = this.props;
     const { params } = navigation.state;
     return (
@@ -34,40 +70,43 @@ class HorseProfile extends Component<Props> {
             banner
         />
         <ScrollView contentContainerStyle={styles.container}>
-          <Text style={styles.name}>{params.Name}</Text>
+          <Text style={styles.header}>{params.Name}</Text>
           <Image
             style={styles.profilePicture}
             source={require('../images/horseProfilePic.jpg')}
           />
           <Text style={styles.status}>{params.Status}</Text>
           <View style={styles.details}>
-            <Text>Upcoming Services:</Text>
+            <Text style={styles.body}>Upcoming Services:</Text>
             <FlatList
               style={styles.list}
               data={params.Services}
               renderItem={item => <Text style={styles.listItem}>{item.item.Type}</Text>}
             />
           </View>
-            <Text>Feed</Text>
-            <FlatList
-              style={styles.list}
-              data={params.Food}
-              renderItem={item => <Text style={styles.listItem}>{item.item}</Text>}
-            />
-            <FlatList
-              style={styles.photoCarousel}
-              horizontal
-              data={rugImages}
-              renderItem={item => <Image
-                style={styles.carouselImage}
-                source={require('../images/horseProfilePic.jpg')}
-              />}
-            />
-            <Text>{params.Headcollars}</Text>
-          
           <View>
           </View>
         </ScrollView>
+        <Animated.View style={[styles.detailsView, {top: viewHeight}]} >
+            <Text onPress={() => this.toggleDetailView()} style={styles.header}>Details</Text>
+            <Text style={styles.body}>Feed</Text>
+              <FlatList
+                style={styles.list}
+                data={params.Food}
+                renderItem={item => <Text style={styles.listItem}>{item.item}</Text>}
+              />
+              <Text style={styles.body}>Rugs</Text>
+              <FlatList
+                style={styles.photoCarousel}
+                horizontal
+                data={rugImages}
+                renderItem={item => <Image
+                  style={styles.carouselImage}
+                  source={require('../images/horseProfilePic.jpg')}
+                />}
+              />
+              <Text>{params.Headcollars}</Text>
+          </Animated.View>
       </SafeAreaView>
     );
   }
@@ -83,10 +122,22 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: '5%',
   },
-  name: {
+  detailsView: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    backgroundColor: Colors.DarkGrey,
+    borderRadius: 150,
+    alignItems: 'center',
+  },
+  header: {
     color: Colors.Black,
     fontSize: FontSizes.Title,
     margin: '5%',
+  },
+  body: {
+    color: Colors.Black,
+    fontSize: FontSizes.Medium,
   },
   status: {
     color: Colors.Black,
@@ -101,6 +152,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   list: {
+    width: '90%',
     height: '10%',
   },
   listItem: {
