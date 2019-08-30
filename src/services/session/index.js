@@ -21,14 +21,6 @@ const onRequestSuccess = (response) => {
     session.user = response.user;
   }
 
-  if (response.Code) {
-    session.code = response.Code;
-  }
-
-  if (response.MyTeamUUID) {
-    session.teamUUID = response.MyTeamUUID;
-  }
-
   store.dispatch(actionCreators.update(session));
 };
 

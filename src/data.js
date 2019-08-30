@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const data = {
+export default {
   Tewin: {
     id: 1,
     staff: [
